@@ -1,10 +1,6 @@
-/*************************************************************************
-	> File Name: WritePriorityMutex.h
-	> Author: lihengfeng
-	> Mail: 17704623602@163.com 
-	> Created Time: Sun Dec 17 14:25:22 2017
- ************************************************************************/
 //这个版本是为了更容易理解而写，其实可以将readRunningCount和 writeRuningCoun合成一个变量
+
+#pragma once
 
 #include<iostream>
 #include<mutex>

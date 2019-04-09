@@ -1,0 +1,35 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+bucket	threadsafe_bucket.h	/^	list<bucket_value> bucket;$/;"	m	class:threadsafe_bucket
+bucket_value	threadsafe_bucket.h	/^	typedef std::pair<Key,Value> bucket_value;  $/;"	t	class:threadsafe_bucket
+buckets	threadsafe_lookup_table.h	/^	vecctor<bucket> buckets;$/;"	m	class:threadsafe_lookup_talbe
+cond	threadsafe_queue.h	/^	std::condition_variable cond;$/;"	m	class:threadsafe_queue
+data	threadsafe_queue.h	/^		shared_ptr<T> data;$/;"	m	struct:threadsafe_queue::node
+empty	threadsafe_queue.h	/^	bool empty() const{$/;"	f	class:threadsafe_queue
+get_bucket	threadsafe_lookup_table.h	/^	bucket get_bucket(Key key){$/;"	f	class:threadsafe_lookup_talbe
+hasher	threadsafe_lookup_table.h	/^	std::hash<key> hasher;$/;"	m	class:threadsafe_lookup_talbe
+head	threadsafe_queue.h	/^	unique_ptr<node> head;$/;"	m	class:threadsafe_queue
+head_mutex	threadsafe_queue.h	/^	std::mutex head_mutex;$/;"	m	class:threadsafe_queue
+main	testqueue.cpp	/^int main(){$/;"	f
+next	threadsafe_queue.h	/^		unique_ptr<node> next;$/;"	m	struct:threadsafe_queue::node
+node	threadsafe_queue.h	/^	struct node{$/;"	s	class:threadsafe_queue
+other	threadsafe_queue.h	/^	threadsafe_queue& operator=(const threadsafe_queue& other)=delete;$/;"	m	class:threadsafe_queue
+other	threadsafe_queue.h	/^	threadsafe_queue(const threadsafe_queue& other)=delete;$/;"	m	class:threadsafe_queue
+pll	threadsafe_queue.h	/^void pll(){$/;"	f
+push	threadsafe_queue.h	/^void threadsafe_queue<T>::push(T n){$/;"	f	class:threadsafe_queue
+tail	threadsafe_queue.h	/^	node* tail;$/;"	m	class:threadsafe_queue
+tail_mutex	threadsafe_queue.h	/^	std::mutex tail_mutex;$/;"	m	class:threadsafe_queue
+threadsafe_bucket	threadsafe_bucket.h	/^class threadsafe_bucket{$/;"	c
+threadsafe_lookup_talbe	threadsafe_lookup_table.h	/^class threadsafe_lookup_talbe{$/;"	c
+threadsafe_queue	threadsafe_queue.h	/^	threadsafe_queue():head(new node),tail(head->get()){};$/;"	f	class:threadsafe_queue
+threadsafe_queue	threadsafe_queue.h	/^class threadsafe_queue{$/;"	c
+try_pop	threadsafe_queue.h	/^bool threadsafe_queue<T>::try_pop(T value){$/;"	f	class:threadsafe_queue
+try_pop	threadsafe_queue.h	/^shared_ptr<T> threadsafe_queue<T>::try_pop(){$/;"	f	class:threadsafe_queue
+wait_for_data	threadsafe_queue.h	/^unique_lock<mutex> threadsafe_queue<T>::wait_for_data(){$/;"	f	class:threadsafe_queue
+wait_pop	threadsafe_queue.h	/^shared_ptr<T> threadsafe_queue<T>::wait_pop( ){$/;"	f	class:threadsafe_queue
+wait_pop	threadsafe_queue.h	/^void threadsafe_queue<T>::wait_pop(T value){$/;"	f	class:threadsafe_queue
+wait_pop_head	threadsafe_queue.h	/^void threadsafe_queue<T>::wait_pop_head(T& value){$/;"	f	class:threadsafe_queue

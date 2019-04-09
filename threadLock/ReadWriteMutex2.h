@@ -1,17 +1,13 @@
-/*************************************************************************
-	> File Name: ReadWriteMutex.h
-	> Author: lihengfeng
-	> Mail: 17704623602@163.com 
-	> Created Time: Thu Nov 30 15:33:11 2017
- ************************************************************************/
+#pragma once
+
+#include<iostream>
+#include<mutex>
+
 /*
  * 利用两个互斥量实现读写锁
  * 其中mutex_ 保护readCount数据，
  * writeMutex_ 起互斥读写的作用
 */
-
-#include<iostream>
-#include<mutex>
 
 class ReadWriteMutex{
 public:

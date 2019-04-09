@@ -1,9 +1,4 @@
-/*************************************************************************
-	> File Name: ReadWriteMutex.h
-	> Author: lihengfeng
-	> Mail: 17704623602@163.com 
-	> Created Time: Thu Nov 30 16:15:11 2017
- ************************************************************************/
+#pragma once
 
 #include<mutex>
 #include<condition_variable>

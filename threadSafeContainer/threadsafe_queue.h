@@ -13,6 +13,12 @@ using std::unique_lock;
 using std::lock_guard;
 using std::make_shared;
 
+/*
+ * 1 pop和push操作的不是同一个节点，提高并发度
+ * 2 创建虚拟节点
+ * 3 node 中 使用 shared_ptr<T> 保存 值,一方面减少了pop中的内存分配，另一方面将内存不够导致的异常放入push中，
+ */ 
+
 template <typename T>
 class threadsafe_queue{
 	private:
@@ -20,13 +26,13 @@ class threadsafe_queue{
 			shared_ptr<T> data;
 			unique_ptr<node> next;
 		};
-		std::mutex head_mutex;
+		std::mutex head_mutex;  
 		std::mutex tail_mutex;
 		std::condition_variable cond;
-		unique_ptr<node> head;
+		unique_ptr<node> head; //使用 unique_ptr,不需要在析构函数主动释放
 		node* tail;
 
-		node* get_tail(){
+		node* get_tail(){// 配合pop使用的,可以把该函数放到if（）语句内，从而达到缩小临界区的目的
 			std::lock_guard<mutex> tail_lock(tail_mutex);
 			return tail;
 		}
@@ -86,7 +92,6 @@ class threadsafe_queue{
 				tail=new_tail;
 			}
 			cond.notify_one();
-
 		}
 		void wait_pop(T& value){
 			wait_pop_head(value);
@@ -102,7 +107,6 @@ class threadsafe_queue{
 		shared_ptr<T> try_pop(){
 			unique_ptr<node> old_node=try_pop_head();
 			return old_node?old_node->data:shared_ptr<T>();
-
 		}
 
 		bool empty() const{

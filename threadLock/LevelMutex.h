@@ -32,6 +32,7 @@ class LevelMutex{
 			curLevel=preLevel;
 			mutex_.unlock();
 		}
+		//和lock实现差不多，只不是强制要求获取锁
 		bool try_lock(){
 			checkLevel();
 			if(!mutex_.try_lock())
@@ -49,7 +50,7 @@ class LevelMutex{
 		}
 		const int level;   //准备加锁的层次数
 		int preLevel;   //解锁恢复现场时记录的层次数
-		static thread_local int curLevel;   //代表正在锁住的层次数,这里使用了thread Local
+		static thread_local int curLevel;   //代表正在锁住的层次数,这里必须使用thread Local,因为层次锁只要保证同一个线程的加锁顺序，不同线程间没有要求
 		std::mutex mutex_;
 };
 //使用UNSIGND_MAX初始化表明刚开始任何层的mutex都可以加锁成功

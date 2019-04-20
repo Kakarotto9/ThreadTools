@@ -25,12 +25,13 @@ class CountDownLatch{
 			condition_.notify_all();
 	}
 	void wait(){
-		std::lock_guard<std::mutex> lock(mutex_);
-		condition_.wait(mutex_,[this]{return count>0;});
+		//std::lock_guard<std::mutex> lock(mutex_);
+		std::unique_lock<std::mutex> lock(mutex_);
+		condition_.wait(lock,[this]{return count>0;});
 	}
 
 	private:
 	int count;
 	std::mutex mutex_;
-	std::condition_variable_any condition_;
+	std::condition_variable condition_;
 };
